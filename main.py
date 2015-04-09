@@ -16,10 +16,10 @@ key = options.key
 
 if options.decoder != False :
 	crpty = options.decoder 
-	print decoder(key,crpty)
+	print de_en_coder(key,crpty,'decode')
 elif options.encoder != False:
 	encode = options.encoder
-	print encoder(key,encode)
+	print de_en_coder(key,encode,'encode')
 else:
 	print "You should input something to decode or encode,"
 	print "run 'python main.py -h' can get information."
