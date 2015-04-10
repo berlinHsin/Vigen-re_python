@@ -9,7 +9,7 @@ def de_en_coder(key,token,state=True):
 		False -> decode
 	"""
 	result = list()
-	token_lower = token.lower()
+	key , token_lower = key.lower() , token.lower()
 	key_limit = len(key) - 1
 	key_ptr = 0 
 	for i,t in enumerate(token_lower) :
@@ -18,8 +18,7 @@ def de_en_coder(key,token,state=True):
 			continue
 		t_index = dictionary.index(t)
 		k_index = dictionary.index(key[key_ptr])
-		r_index = (state) and (t_index+k_index) or (t_index-k_index) 
-		r_index %= 26
+		r_index = ( (state) and (t_index+k_index) or (t_index-k_index) ) %26
 		if token[i].isupper():
 			result.append(dictionary[r_index].upper())
 		else:
@@ -28,7 +27,7 @@ def de_en_coder(key,token,state=True):
 	return "".join(result)
 
 if __name__ == "__main__" :
-	word = "Hello World!"
+	word = "Hello World! My name is Berlin."
 	key  = "claire"
 	word_encoded = de_en_coder(key,word,True)
 	word_decoded = de_en_coder(key,word_encoded,False)
