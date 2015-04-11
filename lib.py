@@ -9,7 +9,7 @@ def de_en_coder(key,token,state=True):
 		False -> decode
 	"""
 	result = list()
-	key , token_lower = key.lower() , token.lower()
+	key , token_lower = key.lower().rstrip() , token.lower()
 	key_limit = len(key) - 1
 	key_ptr = 0 
 	for i,t in enumerate(token_lower) :
